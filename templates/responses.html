@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Responses</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Survey Responses</h1>
+      <p><a href="{{ url_for('survey') }}">Back to survey</a></p>
+
+      {% if responses %}
+      <div class="responses">
+        {% for r in responses %}
+        <article class="card">
+          <h2>{{ r['name'] }}</h2>
+          <p><strong>Q1:</strong> {{ r['q1'] }}</p>
+          <p><strong>Q2:</strong> {{ r['q2'] }}</p>
+          <p><strong>Q3:</strong> {{ r['q3'] }}</p>
+          <small>Submitted: {{ r['created_at'] }}</small>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No responses yet.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
