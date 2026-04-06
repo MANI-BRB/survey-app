@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Survey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Simple Survey</h1>
+      <p>Fill out the form below to submit your feedback.</p>
+      <nav class="links">
+        <a href="{{ url_for('responses') }}">View survey responses</a>
+        <a href="{{ url_for('clients') }}">View clients</a>
+        <a href="{{ url_for('new_client') }}">Add client</a>
+      </nav>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <form method="post" class="survey-form">
+        <label for="name">Your Name</label>
+        <input id="name" name="name" type="text" value="{{ previous.get('name', '') }}" required />
+
+        {% for question in questions %}
+        <label for="q{{ loop.index }}">{{ question }}</label>
+        <textarea id="q{{ loop.index }}" name="q{{ loop.index }}" rows="3" required>{{ previous.get('q' ~ loop.index, '') }}</textarea>
+        {% endfor %}
+
+        <button type="submit">Submit Survey</button>
+      </form>
+    </main>
+  </body>
+</html>

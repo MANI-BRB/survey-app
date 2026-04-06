@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Thank you!</h1>
+      <p>Your response has been saved.</p>
+      <nav class="links">
+        <a href="{{ url_for('survey') }}">Back to survey</a>
+        <a href="{{ url_for('responses') }}">View survey responses</a>
+        <a href="{{ url_for('clients') }}">View clients</a>
+      </nav>
+    </main>
+  </body>
+</html>

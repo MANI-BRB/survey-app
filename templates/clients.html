@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clients</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Clients</h1>
+      <nav class="links">
+        <a href="{{ url_for('survey') }}">Back to survey</a>
+        <a href="{{ url_for('new_client') }}">Add client</a>
+      </nav>
+
+      {% if clients %}
+      <div class="responses">
+        {% for c in clients %}
+        <article class="card">
+          <h2>{{ c['name'] }}</h2>
+          <p><strong>Email:</strong> {{ c['email'] }}</p>
+          <small>Added: {{ c['created_at'] }}</small>
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No clients yet.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
