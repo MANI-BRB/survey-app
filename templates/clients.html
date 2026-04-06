@@ -3,36 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Survey Responses</title>
+    <title>Clients</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
   <body>
     <main class="container">
-      <h1>Survey Responses</h1>
- codex/create-a-simple-survey-web-app-p7anze
+      <h1>Clients</h1>
       <nav class="links">
         <a href="{{ url_for('survey') }}">Back to survey</a>
-        <a href="{{ url_for('clients') }}">View clients</a>
         <a href="{{ url_for('new_client') }}">Add client</a>
       </nav>
 
-      <p><a href="{{ url_for('survey') }}">Back to survey</a></p>
- main
-
-      {% if responses %}
+      {% if clients %}
       <div class="responses">
-        {% for r in responses %}
+        {% for c in clients %}
         <article class="card">
-          <h2>{{ r['name'] }}</h2>
-          <p><strong>Q1:</strong> {{ r['q1'] }}</p>
-          <p><strong>Q2:</strong> {{ r['q2'] }}</p>
-          <p><strong>Q3:</strong> {{ r['q3'] }}</p>
-          <small>Submitted: {{ r['created_at'] }}</small>
+          <h2>{{ c['name'] }}</h2>
+          <p><strong>Email:</strong> {{ c['email'] }}</p>
+          <small>Added: {{ c['created_at'] }}</small>
         </article>
         {% endfor %}
       </div>
       {% else %}
-      <p>No responses yet.</p>
+      <p>No clients yet.</p>
       {% endif %}
     </main>
   </body>

@@ -39,6 +39,19 @@ def init_db():
         )
         """
     )
+codex/create-a-simple-survey-web-app-p7anze
+    db.execute(
+        """
+        CREATE TABLE IF NOT EXISTS clients (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    )
+=======
+main
     db.commit()
 
 
@@ -83,6 +96,43 @@ def responses():
     return render_template("responses.html", responses=rows)
 
 
+ codex/create-a-simple-survey-web-app-p7anze
+@app.route("/clients")
+def clients():
+    init_db()
+    rows = get_db().execute(
+        "SELECT name, email, created_at FROM clients ORDER BY id DESC"
+    ).fetchall()
+    return render_template("clients.html", clients=rows)
+
+
+@app.route("/clients/new", methods=["GET", "POST"])
+def new_client():
+    init_db()
+
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+
+        if not name or not email:
+            return render_template(
+                "new_client.html",
+                error="Please fill out both name and email.",
+                previous={"name": name, "email": email},
+            )
+
+        get_db().execute(
+            "INSERT INTO clients (name, email) VALUES (?, ?)",
+            (name, email),
+        )
+        get_db().commit()
+        return redirect(url_for("clients"))
+
+    return render_template("new_client.html", error=None, previous={})
+
+
+
+ main
 if __name__ == "__main__":
     with app.app_context():
         init_db()
