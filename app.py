@@ -39,6 +39,7 @@ def init_db():
         )
         """
     )
+codex/create-a-simple-survey-web-app-p7anze
     db.execute(
         """
         CREATE TABLE IF NOT EXISTS clients (
@@ -49,6 +50,8 @@ def init_db():
         )
         """
     )
+=======
+main
     db.commit()
 
 
@@ -93,6 +96,7 @@ def responses():
     return render_template("responses.html", responses=rows)
 
 
+ codex/create-a-simple-survey-web-app-p7anze
 @app.route("/clients")
 def clients():
     init_db()
@@ -127,6 +131,8 @@ def new_client():
     return render_template("new_client.html", error=None, previous={})
 
 
+
+ main
 if __name__ == "__main__":
     with app.app_context():
         init_db()

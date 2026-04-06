@@ -10,11 +10,16 @@
     <main class="container">
       <h1>Thank you!</h1>
       <p>Your response has been saved.</p>
+ codex/create-a-simple-survey-web-app-p7anze
       <nav class="links">
         <a href="{{ url_for('survey') }}">Back to survey</a>
         <a href="{{ url_for('responses') }}">View survey responses</a>
         <a href="{{ url_for('clients') }}">View clients</a>
       </nav>
+
+      <p><a href="{{ url_for('survey') }}">Submit another response</a></p>
+      <p><a href="{{ url_for('responses') }}">View all responses</a></p>
+ main
     </main>
   </body>
 </html>
