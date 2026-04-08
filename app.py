@@ -39,7 +39,6 @@ def init_db():
         )
         """
     )
-codex/create-a-simple-survey-web-app-p7anze
     db.execute(
         """
         CREATE TABLE IF NOT EXISTS clients (
