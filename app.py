@@ -93,7 +93,6 @@ def responses():
     return render_template("responses.html", responses=rows)
 
 
- codex/create-a-simple-survey-web-app-p7anze
 @app.route("/clients")
 def clients():
     init_db()
