@@ -10,7 +10,6 @@
     <main class="container">
       <h1>Simple Survey</h1>
       <p>Fill out the form below to submit your feedback.</p>
- codex/create-a-simple-survey-web-app-p7anze
       <nav class="links">
         <a href="{{ url_for('responses') }}">View survey responses</a>
         <a href="{{ url_for('clients') }}">View clients</a>
@@ -29,7 +28,6 @@
 
         {% for question in questions %}
         <label for="q{{ loop.index }}">{{ question }}</label>
- codex/create-a-simple-survey-web-app-p7anze
         <textarea id="q{{ loop.index }}" name="q{{ loop.index }}" rows="3" required>{{ previous.get('q' ~ loop.index, '') }}</textarea>
 
         <textarea
