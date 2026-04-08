@@ -39,19 +39,17 @@ def init_db():
         )
         """
     )
-    db.execute(
-        """
-        CREATE TABLE IF NOT EXISTS clients (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
-        """
+db.execute(
+    """
+    CREATE TABLE IF NOT EXISTS clients (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
-
-main
-    db.commit()
+    """
+)
+db.commit()
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -75,7 +73,7 @@ def survey():
             "INSERT INTO responses (name, q1, q2, q3) VALUES (?, ?, ?, ?)",
             (name, answers[0], answers[1], answers[2]),
         )
-        db.commit()
+db.commit()
         return redirect(url_for("thank_you"))
 
     return render_template("survey.html", questions=QUESTIONS, error=None, previous={})
@@ -131,7 +129,6 @@ def new_client():
 
 
 
- main
 if __name__ == "__main__":
     with app.app_context():
         init_db()
