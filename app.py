@@ -39,7 +39,7 @@ def init_db():
         )
         """
     )
-db.execute(
+    db.execute(
     """
     CREATE TABLE IF NOT EXISTS clients (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,8 +48,8 @@ db.execute(
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
     """
-)
-db.commit()
+    )
+    db.commit()
 
 
 @app.route("/", methods=["GET", "POST"])
