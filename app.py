@@ -73,7 +73,7 @@ def survey():
             "INSERT INTO responses (name, q1, q2, q3) VALUES (?, ?, ?, ?)",
             (name, answers[0], answers[1], answers[2]),
         )
-db.commit()
+        db.commit()
         return redirect(url_for("thank_you"))
 
     return render_template("survey.html", questions=QUESTIONS, error=None, previous={})
