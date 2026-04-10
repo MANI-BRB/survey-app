@@ -16,7 +16,10 @@
         <a href="{{ url_for('new_client') }}">Add client</a>
       </nav>
 
-      {% if error %}
+ codex/create-a-simple-survey-web-app-695w83
+
+ main
+     {% if error %}
       <p class="error">{{ error }}</p>
       {% endif %}
 
@@ -27,10 +30,29 @@
         {% for question in questions %}
         <label for="q{{ loop.index }}">{{ question }}</label>
         <textarea id="q{{ loop.index }}" name="q{{ loop.index }}" rows="3" required>{{ previous.get('q' ~ loop.index, '') }}</textarea>
+codex/create-a-simple-survey-web-app-695w83
+
+
+        <textarea
+          id="q{{ loop.index }}"
+          name="q{{ loop.index }}"
+          rows="3"
+          required
+        >{{ previous.get('q' ~ loop.index, '') }}</textarea>
+ main
+ main
         {% endfor %}
 
         <button type="submit">Submit Survey</button>
       </form>
+codex/create-a-simple-survey-web-app-695w83
+
+ codex/create-a-simple-survey-web-app-p7anze
+
+
+      <p><a href="{{ url_for('responses') }}">View all responses</a></p>
+ main
+main
     </main>
   </body>
 </html>
