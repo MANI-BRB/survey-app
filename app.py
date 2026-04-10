@@ -31,7 +31,7 @@ def init_db():
     db.executescript(
 
     db.execute(
- main
+ 
         """
         CREATE TABLE IF NOT EXISTS responses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -144,7 +144,7 @@ def new_client():
 
 
 
- main
+ 
 if __name__ == "__main__":
     with app.app_context():
         init_db()
