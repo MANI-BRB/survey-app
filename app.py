@@ -28,11 +28,7 @@ def close_db(_exception):
 def init_db():
     db = get_db()
 
-    db.executescript(
-
-    db.execute(
- 
-        """
+    db.execute("""
         CREATE TABLE IF NOT EXISTS responses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
@@ -40,31 +36,18 @@ def init_db():
             q2 TEXT NOT NULL,
             q3 TEXT NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
- 
-        );
+        )
+    """)
 
+    db.execute("""
         CREATE TABLE IF NOT EXISTS clients (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             email TEXT NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-        );
-        """
-    )
-
         )
-        """
-    )
-    db.execute(
-    """
-    CREATE TABLE IF NOT EXISTS clients (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )
-    """
-    )
+    """)
+
     db.commit()
 
 
