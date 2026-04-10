@@ -27,7 +27,11 @@ def close_db(_exception):
 
 def init_db():
     db = get_db()
+codex/create-a-simple-survey-web-app-695w83
+    db.executescript(
+
     db.execute(
+ main
         """
         CREATE TABLE IF NOT EXISTS responses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,6 +40,18 @@ def init_db():
             q2 TEXT NOT NULL,
             q3 TEXT NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+ codex/create-a-simple-survey-web-app-695w83
+        );
+
+        CREATE TABLE IF NOT EXISTS clients (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        );
+        """
+    )
+
         )
         """
     )
@@ -49,6 +65,7 @@ def init_db():
     )
     """
     )
+ main
     db.commit()
 
 
@@ -127,7 +144,8 @@ def new_client():
     return render_template("new_client.html", error=None, previous={})
 
 
-
+codex/create-a-simple-survey-web-app-695w83
+ main
 if __name__ == "__main__":
     with app.app_context():
         init_db()
